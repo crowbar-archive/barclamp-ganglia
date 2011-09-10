@@ -20,7 +20,7 @@ include_recipe "ganglia::client"
 case node[:platform]
 when "ubuntu","debian"
   gmetad_pkg_name = "gmetad"
-  gmeta_config_file = "/etc/ganglia/gmetad.conf"
+  gmetad_config_file = "/etc/ganglia/gmetad.conf"
   gmetad_svc_name = "gmetad"
   ganglia_web_pkg_name = "ganglia-webfrontend"
   ubuntu_os = true
