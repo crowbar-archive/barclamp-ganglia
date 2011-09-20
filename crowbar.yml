@@ -32,3 +32,19 @@ locale_additions:
           attributes: Attributes
         edit_deployment: 
           deployment: Deployment
+
+debs:
+  pkgs:
+    - ganglia-monitor
+    - gmetad
+    - ganglia-webfrontend
+
+rpms:
+  repos:
+    - bare-rpm epel5-ganglia 10 http://georgiou.fedorapeople.org/epel/5/
+  pkgs:
+    - libconfuse
+    - ganglia
+    - ganglia-gmond
+    - ganglia-web
+    - ganglia-gmetad 
