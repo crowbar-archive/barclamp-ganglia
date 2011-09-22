@@ -42,11 +42,19 @@ debs:
     - ganglia-webfrontend
 
 rpms:
-  repos:
-    - bare-rpm epel5-ganglia 10 http://georgiou.fedorapeople.org/epel/5/
   pkgs:
     - libconfuse
     - ganglia
     - ganglia-gmond
     - ganglia-web
-    - ganglia-gmetad 
+    - ganglia-gmetad
+  raw_pkgs:
+    # Sadly, the source for ganglia 3 is not actually an RPM repository.
+    # Just download the raw rpms and hope for the best.
+    - http://georgiou.fedorapeople.org/epel/5/ganglia-3.1.7-1.el5.x86_64.rpm
+    - http://georgiou.fedorapeople.org/epel/5/ganglia-debuginfo-3.1.7-1.el5.x86_64.rpm
+    - http://georgiou.fedorapeople.org/epel/5/ganglia-devel-3.1.7-1.el5.x86_64.rpm
+    - http://georgiou.fedorapeople.org/epel/5/ganglia-gmetad-3.1.7-1.el5.x86_64.rpm
+    - http://georgiou.fedorapeople.org/epel/5/ganglia-gmond-3.1.7-1.el5.x86_64.rpm
+    - http://georgiou.fedorapeople.org/epel/5/ganglia-gmond-python-3.1.7-1.el5.x86_64.rpm
+    - http://georgiou.fedorapeople.org/epel/5/ganglia-web-3.1.7-1.el5.x86_64.rpm
