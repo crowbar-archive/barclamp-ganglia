@@ -19,7 +19,7 @@ barclamp:
   name: ganglia
   display: Ganglia
   version: 0
-  requires:
+  member:
     - crowbar
 
 crowbar:
