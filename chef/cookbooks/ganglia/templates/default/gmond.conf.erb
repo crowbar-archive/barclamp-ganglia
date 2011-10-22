@@ -8,10 +8,11 @@ globals {
   max_udp_msg_len = 1472        
   mute = no             
   deaf = no             
+  allow_extra_data = yes
   host_dmax = 1200 /*secs */ 
   cleanup_threshold = 300 /*secs */ 
   gexec = no             
-  send_metadata_interval = 0     
+  send_metadata_interval = 60     
 } 
 
 /* If a cluster attribute is specified, then all gmond hosts are wrapped inside 
