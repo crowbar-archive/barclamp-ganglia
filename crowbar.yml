@@ -46,17 +46,68 @@ debs:
 rpms:
   pkgs:
     - libconfuse
-    - ganglia
-    - ganglia-gmond
-    - ganglia-web
-    - ganglia-gmetad
-  raw_pkgs:
-    # Sadly, the source for ganglia 3 is not actually an RPM repository.
-    # Just download the raw rpms and hope for the best.
-    - http://georgiou.fedorapeople.org/epel/5/ganglia-3.1.7-1.el5.x86_64.rpm
-    - http://georgiou.fedorapeople.org/epel/5/ganglia-debuginfo-3.1.7-1.el5.x86_64.rpm
-    - http://georgiou.fedorapeople.org/epel/5/ganglia-devel-3.1.7-1.el5.x86_64.rpm
-    - http://georgiou.fedorapeople.org/epel/5/ganglia-gmetad-3.1.7-1.el5.x86_64.rpm
-    - http://georgiou.fedorapeople.org/epel/5/ganglia-gmond-3.1.7-1.el5.x86_64.rpm
-    - http://georgiou.fedorapeople.org/epel/5/ganglia-gmond-python-3.1.7-1.el5.x86_64.rpm
-    - http://georgiou.fedorapeople.org/epel/5/ganglia-web-3.1.7-1.el5.x86_64.rpm
+  # Alas, our upstream for Ganglia went away.  We need to build from source.
+  redhat-5.7:
+    build_pkgs:
+      - rrdtool-devel
+      - apr-devel
+      - libpng-devel
+      - libart_lgpl-devel
+      - libconfuse-devel
+      - expat-devel
+      - python-devel
+      - freetype-devel
+      - pcre-devel
+      - make
+      - rpm-build
+    pkg_sources:
+      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
+    build_cmd: build.sh
+  redhat-5.6:
+    build_pkgs:
+      - rrdtool-devel
+      - apr-devel
+      - libpng-devel
+      - libart_lgpl-devel
+      - libconfuse-devel
+      - expat-devel
+      - python-devel
+      - freetype-devel
+      - pcre-devel
+      - make
+      - rpm-build
+    pkg_sources:
+      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
+    build_cmd: build.sh
+  centos-5.7:
+    build_pkgs:
+      - rrdtool-devel
+      - apr-devel
+      - libpng-devel
+      - libart_lgpl-devel
+      - libconfuse-devel
+      - expat-devel
+      - python-devel
+      - freetype-devel
+      - pcre-devel
+      - make
+      - rpm-build
+    pkg_sources:
+      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
+    build_cmd: build.sh
+  centos-5.6:
+    build_pkgs:
+      - rrdtool-devel
+      - apr-devel
+      - libpng-devel
+      - libart_lgpl-devel
+      - libconfuse-devel
+      - expat-devel
+      - python-devel
+      - freetype-devel
+      - pcre-devel
+      - make
+      - rpm-build
+    pkg_sources:
+      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
+    build_cmd: build.sh
