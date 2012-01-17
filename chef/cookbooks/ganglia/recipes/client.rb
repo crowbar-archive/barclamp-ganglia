@@ -14,6 +14,21 @@
 # limitations under the License.
 #
 
+# Work around some packaging bugs in ganglia and nagios.
+user "ganglia" do
+  system true
+  shell "/bin/false"
+end
+
+group "ganglia" do
+  members "ganglia"
+end
+
+user "ganglia" do
+  action :modify
+  gid "ganglia"
+end
+
 case node[:platform]
 when "ubuntu","debian"
   pkg_name = "ganglia-monitor"
