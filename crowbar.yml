@@ -119,4 +119,12 @@ rpms:
       - ganglia-gmond
       - ganglia-web
       - ganglia-gmetad
+  centos-6.2:
+    repos:
+      - rpm http://download.fedora.redhat.com/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
+    pkgs:
+      - ganglia
+      - ganglia-gmond
+      - ganglia-web
+      - ganglia-gmetad
 
