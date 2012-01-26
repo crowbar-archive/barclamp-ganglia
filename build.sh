@@ -3,7 +3,8 @@ GANGLIA_RPMS=(ganglia-gmetad-3.1.7-3.x86_64.rpm \
     ganglia-gmond-3.1.7-3.x86_64.rpm \
     ganglia-gmond-python-3.1.7-3.x86_64.rpm \
     ganglia-3.1.7-3.x86_64.rpm \
-    ganglia-web-3.1.7-3.x86_64.rpm)
+    ganglia-web-3.1.7-3.x86_64.rpm \
+    ganglia-devel-3.1.7-3.x86_64.rpm)
 
 bc_needs_build() {
     for pkg in ${GANGLIA_RPMS[@]}; do
