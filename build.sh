@@ -16,4 +16,12 @@ bc_needs_build() {
 bc_build() {
     sudo cp "$BC_DIR/build_in_chroot.sh" "$CHROOT/tmp"
     in_chroot /tmp/build_in_chroot.sh
+    local pkg
+    for pkg in "${GANGLIA_RPMS[@]}"; do
+	[[ -f $BC_CACHE/$OS_TOKEN/pkgs/$pkg ]] || \
+	    die "Ganglia build process did not build $pkg!"
+	if [[ $CURRENT_CACHE_BRANCH ]]; then
+	    (cd "$BC_CACHE/$OS_TOKEN/pkgs"; git add "$pkg")
+	fi
+    done
 }
