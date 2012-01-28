@@ -60,7 +60,6 @@ service "ganglia-monitor" do
   running true
   enabled true
   action [ :enable, :start ]
-  subscribes :restart, resources(:bash => "network delay sleep")
 end
 
 # End of recipe transactions
