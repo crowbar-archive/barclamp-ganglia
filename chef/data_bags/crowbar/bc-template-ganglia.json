@@ -9,6 +9,10 @@
   "deployment": {
     "ganglia": {
       "crowbar-revision": 0,
+      "element_states": {
+        "ganglia-server": [ "readying", "ready", "applying" ],
+        "ganglia-client": [ "readying", "ready", "applying" ]
+      },
       "elements": {},
       "element_order": [
         [ "ganglia-server", "ganglia-client" ]
