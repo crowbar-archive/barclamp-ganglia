@@ -16,6 +16,8 @@
 
 
 include_recipe "ganglia::client"
+include_recipe "apache2"
+
 
 case node[:platform]
 when "ubuntu","debian"
