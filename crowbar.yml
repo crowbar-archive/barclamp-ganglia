@@ -48,6 +48,9 @@ rpms:
     - libconfuse
   # Alas, our upstream for Ganglia went away.  We need to build from source.
   redhat-5.7:
+    pkgs:
+      - php
+      - php-gd
     build_pkgs:
       - rrdtool-devel
       - apr-devel
@@ -64,6 +67,9 @@ rpms:
       - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
     build_cmd: build.sh
   redhat-5.6:
+    pkgs:
+      - php
+      - php-gd
     build_pkgs:
       - rrdtool-devel
       - apr-devel
@@ -80,6 +86,9 @@ rpms:
       - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
     build_cmd: build.sh
   centos-5.7:
+    pkgs:
+      - php
+      - php-gd
     build_pkgs:
       - rrdtool-devel
       - apr-devel
@@ -96,6 +105,9 @@ rpms:
       - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
     build_cmd: build.sh
   centos-5.6:
+    pkgs:
+      - php
+      - php-gd
     build_pkgs:
       - rrdtool-devel
       - apr-devel
