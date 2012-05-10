@@ -14,22 +14,22 @@
 # 
 
 class GangliaService < ServiceObject
-
+  
   def initialize(thelogger)
     @bc_name = "ganglia"
     @logger = thelogger
   end
-
+  
   def create_proposal
     @logger.debug("Ganglia create_proposal: entering")
     base = super
     @logger.debug("Ganglia create_proposal: exiting")
     base
   end
-
+  
   def transition(inst, name, state)
     @logger.debug("Ganglia transition: make sure that network role is on all nodes: #{name} for #{state}")
-
+    
     #
     # If we are discovering the node, make sure that we add the ganglia client or server to the node
     #
@@ -37,9 +37,9 @@ class GangliaService < ServiceObject
       @logger.debug("Ganglia transition: discovered state for #{name} for #{state}")
       db = ProposalObject.find_proposal "ganglia", inst
       role = RoleObject.find_role_by_name "ganglia-config-#{inst}"
-
+      
       if role.override_attributes["ganglia"]["elements"]["ganglia-server"].nil? or
-         role.override_attributes["ganglia"]["elements"]["ganglia-server"].empty?
+        role.override_attributes["ganglia"]["elements"]["ganglia-server"].empty?
         @logger.debug("Ganglia transition: make sure that ganglia-server role is on first: #{name} for #{state}")
         result = add_role_to_instance_and_node("ganglia", inst, name, db, role, "ganglia-server")
       else
@@ -49,11 +49,11 @@ class GangliaService < ServiceObject
           result = add_role_to_instance_and_node("ganglia", inst, name, db, role, "ganglia-client")
         end
       end
-
+      
       # Set up the client url
       if result 
         role = RoleObject.find_role_by_name "ganglia-config-#{inst}"
-
+        
         # Get the server IP address
         server_ip = nil
         [ "ganglia-server" ].each do |element|
@@ -70,25 +70,39 @@ class GangliaService < ServiceObject
             end
           end
         end
-
+        
+        # The Ganglia interface expects IP addresses to be passed in the link references.
+        # The background collection processes explicitly use the node IP addresses to name
+        # the RRD image caching directories which are used for Ganglia graphs.
+        # See /var/lib/ganglia/rrds/Crowbar PoC/* on the Ganalia server node for
+        # an example. PW - 05/02/2012 
         unless server_ip.nil?
           node = NodeObject.find_node_by_name(name)
-          node.crowbar["crowbar"] = {} if node.crowbar["crowbar"].nil?
-          node.crowbar["crowbar"]["links"] = {} if node.crowbar["crowbar"]["links"].nil?
-          node.crowbar["crowbar"]["links"]["Ganglia"] = "http://#{server_ip}/ganglia/?c=Crowbar PoC&h=#{node.name}&m=load_one&r=hour&s=descending&hc=4&mc=2"
+          npub = node.get_network_by_type("public")
+          if npub and npub["address"] and npub["address"] != ""
+            nip = npub["address"]
+          else
+            nip = node.get_network_by_type("admin")["address"]
+          end
+          if nip
+            node.crowbar["crowbar"] = {} if node.crowbar["crowbar"].nil?
+            node.crowbar["crowbar"]["links"] = {} if node.crowbar["crowbar"]["links"].nil?
+            node.crowbar["crowbar"]["links"]["Ganglia"] = "http://#{server_ip}/ganglia/?c=Crowbar PoC&h=#{nip}&m=load_one&r=hour&s=descending&hc=4&mc=2"
+          else  
+            node.crowbar["crowbar"]["links"].delete("Ganglia")
+          end
           node.save
         end 
       end
-
+      
       @logger.debug("Ganglia transition: leaving from discovered state for #{name} for #{state}")
       a = [200, NodeObject.find_node_by_name(name).to_hash ] if result
       a = [400, "Failed to add role to node"] unless result
       return a
     end
-
+    
     @logger.debug("Ganglia transition: leaving for #{name} for #{state}")
     [200, NodeObject.find_node_by_name(name).to_hash ]
   end
-
+  
 end
-
