@@ -3,7 +3,7 @@
   "description": "a common Ganglia service for the cluster that can be used by other barclamps",
   "attributes": {
     "ganglia": {
-      "interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface"
+      "interface_eval": "node.interface.name"
     }
   },
   "deployment": {
