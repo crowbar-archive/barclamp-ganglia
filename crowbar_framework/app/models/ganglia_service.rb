@@ -62,12 +62,7 @@ class GangliaService < ServiceObject
           tnodes.each do |n|
             next if n.nil?
             node = NodeObject.find_node_by_name(n)
-            pub = node.get_network_by_type("public")
-            if pub and pub["address"] and pub["address"] != ""
-              server_ip = pub["address"]
-            else
-              server_ip = node.get_network_by_type("admin")["address"]
-            end
+            server_ip = node.address("public").addr rescue node.address.addr
           end
         end
         
@@ -78,21 +73,14 @@ class GangliaService < ServiceObject
         # an example. PW - 05/02/2012 
         unless server_ip.nil?
           node = NodeObject.find_node_by_name(name)
-          npub = node.get_network_by_type("public")
-          if npub and npub["address"] and npub["address"] != ""
-            nip = npub["address"]
-          else
-            nip = node.get_network_by_type("admin")["address"]
-          end
-          if nip
-            node.crowbar["crowbar"] = {} if node.crowbar["crowbar"].nil?
-            node.crowbar["crowbar"]["links"] = {} if node.crowbar["crowbar"]["links"].nil?
-            node.crowbar["crowbar"]["links"]["Ganglia"] = "http://#{server_ip}/ganglia/?c=Crowbar PoC&h=#{nip}&m=load_one&r=hour&s=descending&hc=4&mc=2"
-          else  
-            node.crowbar["crowbar"]["links"].delete("Ganglia")
-          end
-          node.save
-        end 
+          nip = node.address("public").addr rescue node.address.addr
+          node.crowbar["crowbar"] = {} if node.crowbar["crowbar"].nil?
+          node.crowbar["crowbar"]["links"] = {} if node.crowbar["crowbar"]["links"].nil?
+          node.crowbar["crowbar"]["links"]["Ganglia"] = "http://#{server_ip}/ganglia/?c=Crowbar PoC&h=#{nip}&m=load_one&r=hour&s=descending&hc=4&mc=2"
+        else  
+          node.crowbar["crowbar"]["links"].delete("Ganglia")
+        end
+        node.save
       end
       
       @logger.debug("Ganglia transition: leaving from discovered state for #{name} for #{state}")
