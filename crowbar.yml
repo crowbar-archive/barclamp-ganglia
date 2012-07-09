@@ -124,19 +124,14 @@ rpms:
       - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
     build_cmd: build.sh
   redhat-6.2:
-    repos:
-      - rpm http://download.fedora.redhat.com/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
     pkgs:
       - ganglia
       - ganglia-gmond
       - ganglia-web
       - ganglia-gmetad
   centos-6.2:
-    repos:
-      - rpm http://download.fedora.redhat.com/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
     pkgs:
       - ganglia
       - ganglia-gmond
       - ganglia-web
       - ganglia-gmetad
-
