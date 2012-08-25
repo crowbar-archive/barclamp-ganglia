@@ -45,21 +45,32 @@ package pkg_name
 # Begin recipe transactions
 Chef::Log.debug("BEGIN ganlia-client")
 
-admin_interface = Ganglia::Evaluator.get_value_by_type(node,:interface_eval)
+if ["delete","reset"].member?(node[:state])
+  service "ganglia-monitor" do
+    pattern "gmond"
+    action [:stop, :disable]
+  end
 
-template config_file do
-  source "gmond.conf.erb" 
-  variables( :admin_interface => admin_interface )
-  notifies :restart, "service[ganglia-monitor]"
-end
+  file config_file do
+    action :delete
+  end
+else
+  admin_interface = Ganglia::Evaluator.get_value_by_type(node,:interface_eval)
 
-service "ganglia-monitor" do
-  service_name svc_name
-  supports :restart => true
-  pattern "gmond"
-  running true
-  enabled true
-  action [ :enable, :start ]
+  template config_file do
+    source "gmond.conf.erb" 
+    variables( :admin_interface => admin_interface )
+    notifies :restart, "service[ganglia-monitor]"
+  end
+
+  service "ganglia-monitor" do
+    service_name svc_name
+    supports :restart => true
+    pattern "gmond"
+    running true
+    enabled true
+    action [ :enable, :start ]
+  end
 end
 
 # End of recipe transactions
