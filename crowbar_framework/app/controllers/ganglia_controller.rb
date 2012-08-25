@@ -14,8 +14,5 @@
 # 
 
 class GangliaController < BarclampController
-  def initialize
-    @service_object = GangliaService.new logger
-  end
 end
 
