@@ -1,0 +1,13 @@
+{
+    "type": "map",
+    "required": true,
+    "mapping": {
+        "ganglia": {
+            "type": "map",
+            "required": true,
+            "mapping": {
+                "interface_eval": { "type": "str", "required": true }
+            }
+        }
+    }
+}
