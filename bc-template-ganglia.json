@@ -6,6 +6,10 @@
       "interface_eval": "node.interface.name"
     }
   },
+  "roles": {
+      "ganglia-client": { "jig": "chef" },
+      "ganglia-server": { "jig": "chef" }
+  },
   "deployment": {
     "ganglia": {
       "crowbar-revision": 0,
