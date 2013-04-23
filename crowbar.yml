@@ -123,13 +123,13 @@ rpms:
     pkg_sources:
       - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
     build_cmd: build.sh
-  redhat-6.2:
+  redhat-6.4:
     pkgs:
       - ganglia
       - ganglia-gmond
       - ganglia-web
       - ganglia-gmetad
-  centos-6.2:
+  centos-6.4:
     pkgs:
       - ganglia
       - ganglia-gmond
