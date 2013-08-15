@@ -15,6 +15,9 @@
 #
 
 # Work around some packaging bugs in ganglia and nagios.
+
+return if node[:platform] == "windows"
+
 user "ganglia" do
   system true
   shell "/bin/false"
