@@ -1,0 +1,5 @@
+en:
+  barclamp:
+    dns:
+      edit_attributes:
+        noconfig: No configuration options
