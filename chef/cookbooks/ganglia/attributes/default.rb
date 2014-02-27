@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #
 # Default attributes for system.
 #

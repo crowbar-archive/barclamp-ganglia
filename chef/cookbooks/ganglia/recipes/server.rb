@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # GANLIA monitoring server recipe
 # Copyright 2011, Dell
 #
