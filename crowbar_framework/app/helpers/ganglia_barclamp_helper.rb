@@ -18,17 +18,4 @@
 #
 
 module GangliaBarclampHelper
-  def ganglia_role_contraints
-    {
-      "ganglia-server" => {
-        "unique" => true,
-        "count" => 1,
-        "admin" => true
-      },
-      "ganglia-client" => {
-        "unique" => true,
-        "count" => -1
-      }
-    }
-  end
 end

@@ -19,6 +19,24 @@ class GangliaService < ServiceObject
     @bc_name = "ganglia"
     @logger = thelogger
   end
+
+  class << self
+    def role_constraints
+      @role_constraints ||= begin
+        {
+          "ganglia-server" => {
+            "unique" => true,
+            "count" => 1,
+            "admin" => true
+          },
+          "ganglia-client" => {
+            "unique" => true,
+            "count" => -1
+          }
+        }
+      end
+    end
+  end
   
   def create_proposal
     @logger.debug("Ganglia create_proposal: entering")
