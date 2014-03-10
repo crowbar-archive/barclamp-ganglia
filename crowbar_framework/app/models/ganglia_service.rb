@@ -22,19 +22,17 @@ class GangliaService < ServiceObject
 
   class << self
     def role_constraints
-      @role_constraints ||= begin
-        {
-          "ganglia-server" => {
-            "unique" => true,
-            "count" => 1,
-            "admin" => true
-          },
-          "ganglia-client" => {
-            "unique" => true,
-            "count" => -1
-          }
+      {
+        "ganglia-server" => {
+          "unique" => true,
+          "count" => 1,
+          "admin" => true
+        },
+        "ganglia-client" => {
+          "unique" => true,
+          "count" => -1
         }
-      end
+      }
     end
   end
   
