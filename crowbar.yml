@@ -16,11 +16,12 @@
 #
 
 barclamp:
-  name: ganglia
-  display: Ganglia
+  name: 'ganglia'
+  display: 'Ganglia'
+  description: 'Ganglia monitoring system'
   version: 0
   member:
-    - crowbar
+    - 'crowbar'
 
 crowbar:
   layout: 1
@@ -31,22 +32,22 @@ crowbar:
 
 debs:
   pkgs:
-    - ganglia-monitor
-    - gmetad
-    - ganglia-webfrontend
+    - 'ganglia-monitor'
+    - 'gmetad'
+    - 'ganglia-webfrontend'
 
 rpms:
   pkgs:
-    - libconfuse
+    - 'libconfuse'
   redhat-6.4:
     pkgs:
-      - ganglia
-      - ganglia-gmond
-      - ganglia-web
-      - ganglia-gmetad
+      - 'ganglia'
+      - 'ganglia-gmond'
+      - 'ganglia-web'
+      - 'ganglia-gmetad'
   centos-6.4:
     pkgs:
-      - ganglia
-      - ganglia-gmond
-      - ganglia-web
-      - ganglia-gmetad
+      - 'ganglia'
+      - 'ganglia-gmond'
+      - 'ganglia-web'
+      - 'ganglia-gmetad'
