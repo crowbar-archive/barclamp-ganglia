@@ -23,4 +23,8 @@ class GangliaController < BarclampController
   def initialize_service
     @service_object = GangliaService.new logger
   end
+
+  def permitted_params
+    params.require(:ganglia)
+  end
 end
