@@ -1,10 +1,12 @@
-# Copyright 2011, Dell
+#
+# Copyright 2011-2013, Dell
+# Copyright 2013-2014, SUSE LINUX Products GmbH
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#   http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,15 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: RobHirschfeld
-#
 
 barclamp:
-  name: ganglia
-  display: Ganglia
+  name: 'ganglia'
+  display: 'Ganglia'
+  description: 'Ganglia monitoring system'
   version: 0
   member:
-    - crowbar
+    - 'crowbar'
 
 crowbar:
   layout: 1
@@ -31,99 +32,22 @@ crowbar:
 
 debs:
   pkgs:
-    - ganglia-monitor
-    - gmetad
-    - ganglia-webfrontend
+    - 'ganglia-monitor'
+    - 'gmetad'
+    - 'ganglia-webfrontend'
 
 rpms:
   pkgs:
-    - libconfuse
-  # Alas, our upstream for Ganglia went away.  We need to build from source.
-  redhat-5.7:
-    pkgs:
-      - php
-      - php-gd
-    build_pkgs:
-      - rrdtool-devel
-      - apr-devel
-      - libpng-devel
-      - libart_lgpl-devel
-      - libconfuse-devel
-      - expat-devel
-      - python-devel
-      - freetype-devel
-      - pcre-devel
-      - make
-      - rpm-build
-    pkg_sources:
-      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
-    build_cmd: build.sh
-  redhat-5.6:
-    pkgs:
-      - php
-      - php-gd
-    build_pkgs:
-      - rrdtool-devel
-      - apr-devel
-      - libpng-devel
-      - libart_lgpl-devel
-      - libconfuse-devel
-      - expat-devel
-      - python-devel
-      - freetype-devel
-      - pcre-devel
-      - make
-      - rpm-build
-    pkg_sources:
-      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
-    build_cmd: build.sh
-  centos-5.7:
-    pkgs:
-      - php
-      - php-gd
-    build_pkgs:
-      - rrdtool-devel
-      - apr-devel
-      - libpng-devel
-      - libart_lgpl-devel
-      - libconfuse-devel
-      - expat-devel
-      - python-devel
-      - freetype-devel
-      - pcre-devel
-      - make
-      - rpm-build
-    pkg_sources:
-      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
-    build_cmd: build.sh
-  centos-5.6:
-    pkgs:
-      - php
-      - php-gd
-    build_pkgs:
-      - rrdtool-devel
-      - apr-devel
-      - libpng-devel
-      - libart_lgpl-devel
-      - libconfuse-devel
-      - expat-devel
-      - python-devel
-      - freetype-devel
-      - pcre-devel
-      - make
-      - rpm-build
-    pkg_sources:
-      - http://mirror.its.sfu.ca/mirror/fedora/linux/releases/15/Everything/source/SRPMS/ganglia-3.1.7-3.fc15.src.rpm
-    build_cmd: build.sh
+    - 'libconfuse'
   redhat-6.4:
     pkgs:
-      - ganglia
-      - ganglia-gmond
-      - ganglia-web
-      - ganglia-gmetad
+      - 'ganglia'
+      - 'ganglia-gmond'
+      - 'ganglia-web'
+      - 'ganglia-gmetad'
   centos-6.4:
     pkgs:
-      - ganglia
-      - ganglia-gmond
-      - ganglia-web
-      - ganglia-gmetad
+      - 'ganglia'
+      - 'ganglia-gmond'
+      - 'ganglia-web'
+      - 'ganglia-gmetad'

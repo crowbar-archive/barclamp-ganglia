@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 
 name "ganglia-client"
 description "GANGLIA Client Role - Nodes in the environment that should be monitored"

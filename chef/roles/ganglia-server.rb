@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 
 name "ganglia-server"
 description "GANGLIA Server Role - GANGLIA master for the cloud"
