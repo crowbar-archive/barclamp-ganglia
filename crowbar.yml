@@ -136,3 +136,9 @@ rpms:
       - ganglia-gmond
       - ganglia-web
       - ganglia-gmetad
+  centos-6.5:
+    pkgs:
+      - ganglia
+      - ganglia-gmond
+      - ganglia-web
+      - ganglia-gmetad
