@@ -53,7 +53,7 @@ class GangliaService < ServiceObject
     #
     if state == "discovered"
       @logger.debug("Ganglia transition: discovered state for #{name} for #{state}")
-      db = ProposalObject.find_proposal "ganglia", inst
+      db = Proposal.where(barclamp: "ganglia", name: inst).first
       role = RoleObject.find_role_by_name "ganglia-config-#{inst}"
       
       if role.override_attributes["ganglia"]["elements"]["ganglia-server"].nil? or
